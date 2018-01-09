@@ -1,0 +1,14 @@
+---
+- name: Install lynx
+  apt: name=lynx state=present update_cache=yes
+
+- name: Check conf directories
+  file: state=directory path=/opt/apache/conf/extra
+
+- name: Copy httpd.conf file
+  copy: src=httpd.conf dest=/opt/apache/conf/httpd.conf
+  notify: restart apache
+
+- name: Copy httpd-vhosts.conf file
+  copy: src=httpd-vhosts.conf dest=/opt/apache/conf/extra/httpd-vhosts.conf
+  notify: restart apache

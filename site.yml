@@ -1,0 +1,9 @@
+---
+- name: Configure apache
+  hosts: all
+  # remote_user: root
+  remote_user: ubuntu
+  become: true
+
+  roles:
+    - apache
